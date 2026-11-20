@@ -10,18 +10,46 @@ button{cursor:pointer}.voice{height:56px;width:56px;border-radius:50%;border:1px
 .command-panel{position:absolute;right:4.5vw;top:50%;transform:translateY(-50%);width:min(310px,27vw);text-align:left;padding:22px 18px;border:1px solid #34734a70;border-radius:10px;background:linear-gradient(145deg,#071b0eaa,#030b07dd);box-shadow:0 0 35px #2cf07810,inset 0 0 24px #1aff6b08;backdrop-filter:blur(12px)}.panel-label{font:9px Consolas,monospace;letter-spacing:.22em;color:#70d992;margin-bottom:16px}.command-wrap{display:flex;align-items:center;gap:7px;width:100%;padding:6px 7px 6px 12px;border:1px solid #34734a88;border-radius:7px;background:#041109cc;transition:.2s}.command-wrap:focus-within{border-color:#79ffab;box-shadow:0 0 25px #35ed7840}.promptmark{font:14px Consolas,monospace;color:#74f6a0}.command{flex:1;min-width:0;width:100%;background:transparent;border:0;outline:0;color:#e2ffeb;font:12px Consolas,monospace;padding:10px 2px}.command::placeholder{color:#64836d}.send{border:1px solid #3c8b56;background:#10341d;color:#aaffc2;border-radius:5px;padding:9px 11px;font:10px Consolas,monospace;letter-spacing:.08em;transition:.2s}.panel-hint{font:9px/1.7 Consolas,monospace;color:#587a64;margin-top:13px}.panel-status{font:9px Consolas,monospace;letter-spacing:.13em;color:#80ffab;margin-top:18px;min-height:14px}.panel-status.busy{color:#d6ffc8}
 footer{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:28px;color:#486c55;font:9px Consolas,monospace;letter-spacing:.2em}.corner{position:absolute;width:34px;height:34px;border-color:#55ef9438}.tl{top:26px;left:26px;border-top:1px solid;border-left:1px solid}.tr{top:26px;right:26px;border-top:1px solid;border-right:1px solid}.bl{bottom:26px;left:26px;border-bottom:1px solid;border-left:1px solid}.br{bottom:26px;right:26px;border-bottom:1px solid;border-right:1px solid}
 @keyframes orbit{to{transform:rotateX(68deg) rotateZ(380deg)}}@keyframes orbit2{to{transform:rotateX(72deg) rotateZ(-395deg)}}@keyframes breathe{0%,100%{transform:scale(.97)}50%{transform:scale(1.04)}}@keyframes listen{0%,100%{transform:scale(.92)}50%{transform:scale(1.1)}}@keyframes bar{to{height:25px}}
-@media(max-width:850px){main{padding:82px 20px 240px}.command-panel{top:auto;bottom:64px;left:50%;right:auto;transform:translateX(-50%);width:min(440px,88vw);padding:14px 15px}.panel-label{margin-bottom:9px}.panel-hint{display:none}.panel-status{margin-top:9px}footer{font-size:7px;gap:12px}.right span:last-child{display:none}}@media(max-height:650px) and (min-width:851px){.core{width:245px;height:245px;min-width:220px;min-height:220px}.command-panel{width:280px}main{padding-top:55px;padding-bottom:45px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important}}
+@media(max-width:850px){
+main{padding:78px 174px 42px 8px;justify-content:center}
+.sup{font-size:8px;letter-spacing:.18em}
+.hello{font-size:clamp(17px,4vw,22px);line-height:1.25}
+.desc{font-size:8px;letter-spacing:.06em;line-height:1.5}
+.core{width:clamp(145px,42vw,205px);height:clamp(145px,42vw,205px);min-width:145px;min-height:145px;margin:12px 0}
+.status{font-size:8px}
+.bars{margin:5px 0 8px;gap:3px}
+.voice{width:46px;height:46px}
+.instruction{font-size:7px;letter-spacing:.04em}
+.command-panel{top:50%;bottom:auto;left:auto;right:8px;transform:translateY(-50%);width:158px;padding:12px 9px}
+.panel-label{font-size:7px;letter-spacing:.08em;margin-bottom:10px}
+.panel-label span{display:none}
+.command-wrap{display:flex;flex-wrap:wrap;gap:5px;padding:5px}
+.promptmark{display:none}
+.command{font-size:10px;padding:8px 4px}
+.send{width:100%;padding:8px 5px;font-size:9px}
+.panel-hint{display:block;font-size:7px;line-height:1.5;margin-top:8px}
+.panel-status{font-size:7px;line-height:1.5;margin-top:8px}
+footer{font-size:6px;gap:7px;bottom:10px}
+.right span:last-child{display:none}
+}
+@media(max-width:370px){
+main{padding-right:155px}
+.command-panel{width:140px;right:6px}
+.core{width:140px;height:140px;min-width:140px;min-height:140px}
+.hello{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important}}
 </style></head><body><canvas id="stars"></canvas><div class="grid"></div><div class="vignette"></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
 <header><div class="logo">RUBEN <b>AI</b></div><div class="right"><span class="led" id="sys">CORE STANDBY</span><span id="time">00:00:00</span></div></header>
-<main id="main"><div class="sup">PERSONAL ARTIFICIAL INTELLIGENCE</div><h1 class="hello" id="greeting">At your service, <strong>Ruben.</strong></h1><div class="desc">ALL SYSTEMS READY · AWAITING YOUR COMMAND</div><div class="core"><div class="halo c"></div><div class="halo a"></div><div class="halo b"></div><div class="scan"></div><div class="orb"></div></div><div class="status" id="state">STANDBY</div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="voice" id="voice" title="Activate voice" aria-label="Activate voice">◉</button><div class="instruction" id="hint">TAP TO SPEAK · OR USE THE COMMAND PANEL</div></main>
+<main id="main"><div class="sup">PERSONAL ARTIFICIAL INTELLIGENCE</div><h1 class="hello" id="greeting">Good evening, <strong>Ruben.</strong></h1><div class="desc">ALL SYSTEMS READY · AWAITING YOUR COMMAND</div><div class="core"><div class="halo c"></div><div class="halo a"></div><div class="halo b"></div><div class="scan"></div><div class="orb"></div></div><div class="status" id="state">STANDBY</div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="voice" id="voice" title="Activate voice" aria-label="Activate voice">◉</button><div class="instruction" id="hint">TAP TO SPEAK · OR USE THE COMMAND PANEL</div></main>
 <aside class="command-panel"><div class="panel-label">COMMAND CONSOLE <span style="float:right;color:#4c7859">01 / INPUT</span></div><form class="command-wrap" id="commandForm"><span class="promptmark">›</span><input class="command" id="command" autocomplete="off" spellcheck="false" placeholder="Enter a command..." aria-label="Enter a command"/><button class="send" type="submit">SEND ↗</button></form><div class="panel-hint">ENTER A TASK AND SEND.<br>YOUR INPUT STAYS PRIVATE ON THIS SCREEN.</div><div class="panel-status" id="panelStatus">SYSTEM READY · BACKEND NOT CONNECTED</div></aside>
 <footer><span>● ENCRYPTED SESSION</span><span>RUBEN AI CORE</span><span>VOICE + KEYBOARD</span></footer>
 <script>
 const $=id=>document.getElementById(id);
 function clock(){const d=new Date();$('time').textContent=d.toLocaleTimeString('en-GB');const h=d.getHours();const g=h<12?'Good morning':h<17?'Good afternoon':'Good evening';$('greeting').innerHTML=g+', <strong>Ruben.</strong>'}
 clock();setInterval(clock,1000);let rec=null,active=false;
-function submitCommand(value,source){if(!value.trim())return;$('command').value='';$('state').textContent='COMMAND RECEIVED';$('panelStatus').textContent='COMMAND SENT · CONNECTING TO RUBEN AI CORE';$('panelStatus').classList.add('busy');$('sys').textContent='COMMAND QUEUED';$('hint').textContent='COMMAND RECEIVED';$('panelStatus').textContent='PREVIEW ONLY · ASSISTANT BACKEND NOT CONNECTED';$('panelStatus').classList.remove('busy');$('sys').textContent='CORE STANDBY';}
-$('commandForm').addEventListener('submit',e=>{e.preventDefault();submitCommand($('command').value,'KEYBOARD')});
-$('voice').onclick=()=>{if(active){rec&&rec.stop();return}const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('state').textContent='VOICE API UNAVAILABLE';$('hint').textContent='OPEN IN CHROME OR EDGE · ALLOW MICROPHONE';return}rec=new SR();rec.lang='en-IN';rec.interimResults=false;rec.continuous=false;rec.onstart=()=>{active=true;$('main').classList.add('listening');$('sys').textContent='LISTENING';$('state').textContent='I AM LISTENING';$('hint').textContent='SPEAK YOUR COMMAND';$('voice').textContent='■'};rec.onresult=e=>{const s=e.results[0][0].transcript;submitCommand(s,'VOICE')};rec.onerror=e=>{$('state').textContent='MICROPHONE '+e.error.toUpperCase()};rec.onend=()=>{active=false;$('main').classList.remove('listening');$('sys').textContent='CORE STANDBY';$('voice').textContent='◉'};rec.start()};
+function submitCommand(value){if(!value.trim())return;$('command').value='';$('state').textContent='COMMAND RECEIVED';$('panelStatus').textContent='PREVIEW ONLY · ASSISTANT BACKEND NOT CONNECTED';$('sys').textContent='CORE STANDBY';}
+$('commandForm').addEventListener('submit',e=>{e.preventDefault();submitCommand($('command').value)});
+$('voice').onclick=()=>{if(active){rec&&rec.stop();return}const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('state').textContent='VOICE API UNAVAILABLE';$('hint').textContent='OPEN IN CHROME OR EDGE · ALLOW MICROPHONE';return}rec=new SR();rec.lang='en-IN';rec.interimResults=false;rec.continuous=false;rec.onstart=()=>{active=true;$('main').classList.add('listening');$('sys').textContent='LISTENING';$('state').textContent='I AM LISTENING';$('hint').textContent='SPEAK YOUR COMMAND';$('voice').textContent='■'};rec.onresult=e=>submitCommand(e.results[0][0].transcript);rec.onerror=e=>{$('state').textContent='MICROPHONE '+e.error.toUpperCase()};rec.onend=()=>{active=false;$('main').classList.remove('listening');$('sys').textContent='CORE STANDBY';$('voice').textContent='◉'};rec.start()};
 const c=$('stars'),x=c.getContext('2d');let pts=[];function resize(){c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);pts=Array.from({length:110},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.2+.2,a:Math.random()*.4+.08,v:Math.random()*.18+.03}))}function draw(){x.clearRect(0,0,innerWidth,innerHeight);for(const p of pts){p.y-=p.v;if(p.y<0)p.y=innerHeight;x.fillStyle='rgba(113,255,164,'+p.a+')';x.fillRect(p.x,p.y,p.r,p.r)}requestAnimationFrame(draw)}addEventListener('resize',resize);resize();draw();
 </script></body></html>
